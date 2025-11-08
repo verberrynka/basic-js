@@ -14,9 +14,26 @@ const { NotImplementedError } = require('../lib');
  * For 00-1B-63-84-45-E6, the output should be true.
  *
  */
-function isMAC48Address(/* n */) {
-  // Remove line below and write your code here
-  throw new NotImplementedError('Not implemented');
+function isMAC48Address(n) {
+  const addressAsStr = String(n);
+
+  if (addressAsStr.length !== 17) {
+    return false;
+  }
+
+  const strWithoutHyphen = addressAsStr.replace(/-/g, '');
+
+  if (strWithoutHyphen.length !== 12) {
+    return false;
+  }
+
+  for (let i = 0; i < 12; i++) {
+    if (!Number.isInteger(parseInt(strWithoutHyphen[i], 16))) {
+      return false;
+    }
+  }
+
+  return true;
 }
 
 module.exports = {
