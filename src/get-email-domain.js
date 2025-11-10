@@ -10,8 +10,11 @@ const { NotImplementedError } = require('../lib');
  * For the input 'prettyandsimple@example.com', the output should be 'example.com'
  *
  */
-function getEmailDomain(/* email */) {
-  throw new NotImplementedError('Not implemented');
+function getEmailDomain(email) {
+  let domain = '';
+  const lastAtSymbolIndex = email.lastIndexOf('@');
+  domain = email.slice(lastAtSymbolIndex + 1)
+  return domain;
 }
 
 module.exports = {
